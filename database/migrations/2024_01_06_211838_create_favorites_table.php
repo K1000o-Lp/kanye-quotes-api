@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('quote')->unique();
+            $table->string('quote');
             $table->timestamps();
+
+            // Restrictions
+
+            $table->unique(['user_id', 'quote']);
         });
     }
 
